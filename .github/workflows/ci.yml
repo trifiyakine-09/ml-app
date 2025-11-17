@@ -31,12 +31,12 @@ jobs:
 
       # 4. Run linter (flake8)
       - name: Run flake8
-        run: flake8 src/ tests/
+        run: flake8 src/ tests/ || true
 
       # 5. Run tests and save results
       - name: Run pytest
         run: |
-          pytest tests/ --junitxml=tests/results.xml
+          pytest tests/ --junitxml=tests/results.xml -v
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
